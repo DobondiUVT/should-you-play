@@ -66,10 +66,6 @@ const apiFetch = (endpoint: string, props: ApiProps) => {
     })
 }
 
-function sleep(ms: number) {
-    return new Promise((resolve) => setTimeout(resolve, ms))
-}
-
 export const fetchGames = async (props: ApiProps) => {
     const response = await apiFetch('games', props)
     return await response.json()
@@ -77,13 +73,11 @@ export const fetchGames = async (props: ApiProps) => {
 
 export const fetchCovers = async (ids: number[]) => {
     const idsString = ids.join(',')
-    console.log(idsString)
     const response = await apiFetch('covers', {
         fields: '*',
         where: `id = (${idsString})`,
         limit: UNLIMITED,
     })
-    console.log(response)
     const result = (await response.json()) as Cover[]
     const gameCovers: {
         [key: number]: string

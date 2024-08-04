@@ -1,17 +1,14 @@
-interface Game {
-    id: number
-    name: string
-    cover: string
-}
-
 export default function GamesLoading() {
     return (
         <div className={'grid grid-cols-4 gap-6'}>
             {Array(16)
                 .fill('')
-                .map(() => {
+                .map((_, index) => {
                     return (
-                        <div className={'animate-pulse'}>
+                        <div
+                            key={`loading-game-${index}`}
+                            className={'animate-pulse'}
+                        >
                             <div className="flex items-center justify-center aspect-[3/4] w-[300px] rounded-md overflow-hidden bg-gray-300">
                                 <svg
                                     className="w-10 h-10 text-gray-200 dark:text-gray-600"
