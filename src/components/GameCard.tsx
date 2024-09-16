@@ -2,10 +2,11 @@ import Placeholder from '../../public/placeholder.svg'
 import Link from 'next/link'
 import { Game } from '@/lib/types'
 import Image from 'next/image'
+import { slugify } from '@/lib/utils'
 
 export default async function GameCard({ game }: { game: Game }) {
     return (
-        <Link href={`/games/${game.id}`}>
+        <Link href={`/game/${slugify(game.name)}`}>
             <div
                 className={
                     'relative aspect-[3/4] w-[300px] rounded-lg border border-slate-200 overflow-hidden'

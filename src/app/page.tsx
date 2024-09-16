@@ -1,4 +1,3 @@
-import { fetchGames } from '@/lib/fetch'
 import Games from '@/components/Games'
 import { Suspense } from 'react'
 import GamesLoading from '@/components/loading/GamesLoading'

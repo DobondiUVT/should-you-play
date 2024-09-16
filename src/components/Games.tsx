@@ -1,21 +1,15 @@
-import { fetchGames, fetchGamesWithCovers } from '@/lib/fetch'
+import { withCovers } from '@/lib/fetch'
 import GameCard from '@/components/GameCard'
-
-interface Game {
-    id: number
-    name: string
-    cover: string
-}
+import api from '@/lib/api/api'
+import { Game } from '@/lib/types'
 
 export default async function Games() {
-    const games = await fetchGamesWithCovers({
-        fields: ['name', 'cover'],
-        limit: 200,
-        sort: {
-            field: 'rating_count',
-            type: 'desc',
-        },
-    })
+    const games = await api()
+        .fields(['name', 'cover'])
+        .sort('rating_count', 'desc')
+        .limit(30)
+        .get<Game[]>('games', withCovers)
+
     return (
         <div className={'grid grid-cols-4 gap-6'}>
             {games.map((game) => {
