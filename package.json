@@ -9,13 +9,11 @@
         "lint": "next lint"
     },
     "dependencies": {
-        "apicalypse": "^0.3.1",
-        "next": "14.2.5",
+        "next": "^14.2.5",
         "react": "^18",
         "react-dom": "^18"
     },
     "devDependencies": {
-        "@types/apicalypse": "^0.1.5",
         "@types/node": "^20",
         "@types/react": "^18",
         "@types/react-dom": "^18",
